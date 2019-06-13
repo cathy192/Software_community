@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=euc-kr" pageEncoding="euc-kr"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <script> 
 		function writeCheck()
@@ -7,14 +7,14 @@
 		   
 		  if( !form.subject.value )
 		   {
-		    alert( "Á¦¸ñÀ» Àû¾îÁÖ¼¼¿ä" );
+		    alert( "ì œëª©ì„ ì ì–´ì£¼ì„¸ìš”" );
 		    form.subject.focus();
 		    return;
 		   }
 		 
 		  if( !form.content.value )
 		   {
-		    alert( "³»¿ëÀ» Àû¾îÁÖ¼¼¿ä" );
+		    alert( "ë‚´ìš©ì„ ì ì–´ì£¼ì„¸ìš”" );
 		    form.content.focus();
 		    return;
 		   }  
@@ -29,34 +29,34 @@
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-	<title>BOARD Å×ÀÌºí ·¹ÄÚµå »ğÀÔ</title>
+	<title>BOARD í…Œì´ë¸” ë ˆì½”ë“œ ì‚½ì…</title>
 </head>
 <body>
 	<div style="text-align:right">
-		»ç¿ëÀÚID : ${id} <input type=button class="btn btn-info" value="·Î±×¾Æ¿ô" OnClick="window.location='logout.do'">
+		ì‚¬ìš©ìID : ${id} <input type=button class="btn btn-info" value="ë¡œê·¸ì•„ì›ƒ" OnClick="window.location='logout.do'">
 	</div>
 	<form action ="/board/modify.do" method="get">
 		<c:forEach items="${articleList}" var="article">
 			<input type="hidden" name="num" value="${article.num}">
 			<table class="table table-striped table-bordered table-hover" style="text-align:center">
-				<caption style="text-align:center">°Ô½ÃÆÇ ¼öÁ¤</caption>		
+				<caption style="text-align:center">ê²Œì‹œíŒ ìˆ˜ì •</caption>		
 				<tr> 
-					<td>Á¦¸ñ</td>
+					<td>ì œëª©</td>
 					<td style="text-align:left"><input type="text" name="subject" value="${article.subject}"></td>
 				</tr>
 				<tr>	
-					<td>ÀÛ¼ºÀÚ</td>
+					<td>ì‘ì„±ì</td>
 					<td style="text-align:left">${article.id}</td>
 				</tr>
 				<tr>	
-					<td>ÀÛ¼ºÀÏÀÚ</td>
+					<td>ì‘ì„±ì¼ì</td>
 					<td style="text-align:left">${article.boarddate}</td>
 				</tr>
 				<tr>	
-					<td>Ä«Å×°í¸®</td>
+					<td>ì¹´í…Œê³ ë¦¬</td>
 					<td >    
 					<select class="form-control" name="category">
-						 <option value="">±¸ºĞ</option>
+						 <option value="">êµ¬ë¶„</option>
 						<option value="1" <c:if test="${category == 1}"> selected </c:if>>one</option> 
 					    <option value="2" <c:if test="${category == 2}"> selected </c:if>>Two</option> 
 					    <option value="3" <c:if test="${category == 3}"> selected</c:if>>Three</option>
@@ -66,14 +66,14 @@
 				</td>
 				</tr>
 				<tr>	
-					<td>³»¿ë</td>
-					<td style="text-align:left"><textarea name="content" rows="10" placeholder="³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä" form="inform">${article.content}</textarea></td>
+					<td>ë‚´ìš©</td>
+					<td style="text-align:left"><textarea name="content" rows="10" placeholder="ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš”" form="inform">${article.content}</textarea></td>
 				</tr>	
 				<tr>
 					<td></td>
 					<td style="text-align:right">
-						<input type=submit class="btn btn-warning" value="¼öÁ¤" Onclick="javascript:writeCheck();">
-						<input type=button class="btn btn-secondary" value="Ãë¼Ò" OnClick="window.location='content.do?num=${article.num}'">
+						<input type=submit class="btn btn-warning" value="ìˆ˜ì •" Onclick="javascript:writeCheck();">
+						<input type=button class="btn btn-secondary" value="ì·¨ì†Œ" OnClick="window.location='content.do?num=${article.num}'">
 					</td>
 				</tr>	
 			</table>

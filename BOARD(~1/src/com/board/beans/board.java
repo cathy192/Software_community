@@ -14,7 +14,6 @@ public class board {//계층간 데이터 교환을 위한 자바빈즈
 	private String id;
 	
 	//이메일
-	//private String Snum;
 	
 	//작성일자
 	private String boarddate;
@@ -71,6 +70,7 @@ public class board {//계층간 데이터 교환을 위한 자바빈즈
 	public String getBoarddate() {
 		return boarddate;
 	}
+
 	public void setBoarddate(String boarddate) {
 		this.boarddate = boarddate;
 	}

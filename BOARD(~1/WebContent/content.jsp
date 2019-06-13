@@ -55,7 +55,7 @@ function writeCheck()
 		</tr>	
 		<tr>
 			<td>내용</td>
-			<td style="text-align:left">${article.content}</td>						
+			<td style="text-align:left ">${article.content}</td>						
 		</tr>
 		
 	</table>
@@ -70,20 +70,20 @@ function writeCheck()
 	<table class="table table-striped table-bordered table-hover" style="text-align:center">
 	<caption style="text-align:left"> <br><br> 댓글 작성</caption>
 		<tr>
-			<td width="250px">아이디 (이메일)</td>
+			<td width="250px">아이디</td>
 			<td width="120px">작성일자</td>
 			<td>댓글 내용</td>
 		</tr>
-		<c:forEach items="${commentList}" var="comments">
 		
+		<c:forEach items="${commentList}" var="comment">
 		<tr>
-			<td>${comments.id}</td>
-			<td>${comments.boarddate}</td>
-			<td style="text-align-last:justify;">${comments.content}
-			<c:if test="${comments.id eq id}">
-				<%int num=Integer.parseInt(request.getParameter("num")); %>
-				<input type=button class="btn btn-danger" value="삭제하기" OnClick="window.location='commentsdelete.do?num=${comments.num}&boardnum=<%=num%>'" >
-			</c:if>
+			<td>${comment.id}</td>
+			<td>${comment.boarddate}</td>
+			<td style="text-align-last:justify;">${comment.content}
+			<%-- <c:if test="${comment.id eq id}">
+				<%int num=Integer.parseInt(request.getParameter("num2")); %>
+				<input type=button class="btn btn-danger" value="삭제하기" OnClick="window.location='commentsdelete.do?num=${comment.num}&num=<%=num%>'" >
+			</c:if> --%>
 			</td>
 		</tr>
 		</c:forEach>

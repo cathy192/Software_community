@@ -34,7 +34,7 @@ public class ModifyAction implements CommandAction {
         			return "loginerror.jsp";
         		}
     			
-    			request.setCharacterEncoding("euc-kr");
+    			request.setCharacterEncoding("utf-8");
     			String num = request.getParameter("num");    			
     			String subject = request.getParameter("subject");
     			String content = request.getParameter("content");

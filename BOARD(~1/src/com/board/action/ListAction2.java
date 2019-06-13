@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.board.beans.board;
+import com.board.beans.comment;
 import com.board.controller.CommandAction;
  
 public class ListAction2 implements CommandAction {
@@ -26,7 +27,7 @@ public class ListAction2 implements CommandAction {
     	Class.forName("com.mysql.cj.jdbc.Driver");    	    
     	Connection conn = null;
     	Statement stmt = null;
-    	ResultSet rs = null;    	
+    	ResultSet rs = null;  
     	
     	
     	String opt = request.getParameter("opt");
@@ -59,9 +60,8 @@ public class ListAction2 implements CommandAction {
     		}
     		conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
     		
-    		stmt = conn.createStatement();    		
+    		stmt = conn.createStatement();
     		rs = stmt.executeQuery(query);    		
-    		
     		ArrayList<board> articleList = new ArrayList<board>();    		
     		
     		while(rs.next()){
@@ -74,7 +74,6 @@ public class ListAction2 implements CommandAction {
     			article.setScore(rs.getString("score"));
     			article.setCategory(rs.getInt("category"));
     			articleList.add(article);
-    			
     		}
     		request.setAttribute("articleList",articleList);
     		
@@ -86,9 +85,6 @@ public class ListAction2 implements CommandAction {
     		
     		if(conn != null) try{conn.close();} catch(SQLException ex) {}
     	}
- 
         return "list.jsp";
- 
     }
- 
 }

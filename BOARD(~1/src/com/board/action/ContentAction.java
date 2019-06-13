@@ -29,7 +29,8 @@ public class ContentAction implements CommandAction {
     	int num = Integer.parseInt(request.getParameter("num"));
     	Connection conn = null;
     	Statement stmt = null;    	
-    	ResultSet rs = null;   
+    	ResultSet rs = null;
+    	ResultSet rs1 = null;
     	int score = 0;
     	try {
     		
@@ -47,17 +48,17 @@ public class ContentAction implements CommandAction {
     		String dbPass = "root";
     		
     		String query = "select * from board1 where num = "+num;
-    		
+    		String query1 = "select distinct comment1.num,comment1.id,comment1.boarddate,comment1.content from comment1 join board1 on comment1.num="+num;
     		conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
     		
-    		stmt = conn.createStatement();    		
-    		rs = stmt.executeQuery(query);    		
+    		stmt = conn.createStatement();
+    		rs = stmt.executeQuery(query);
     		
     		ArrayList<board> articleList = new ArrayList<board>();
     		
     		while(rs.next()){
     			board article = new board();
-    			article.setNum(rs.getInt("num"));    			
+    			article.setNum(rs.getInt("num"));
     			article.setSubject(rs.getString("subject"));
     			article.setContent(rs.getString("content"));
     			article.setId(rs.getString("id"));
@@ -69,9 +70,24 @@ public class ContentAction implements CommandAction {
     			articleList.add(article);
     		}
     		request.setAttribute("articleList",articleList);
+    		
+    		
+    		rs1 = stmt.executeQuery(query1);
+    		
+			ArrayList<comment> commentList = new ArrayList<comment>();
+    		
+    		while(rs1.next()){
+    			comment comments = new comment();
+    			comments.setNum(rs1.getInt("num"));    		
+    			comments.setId(rs1.getString("id"));
+    			comments.setContent(rs1.getString("content"));
+    			comments.setBoarddate(rs1.getString("boarddate"));
+    			commentList.add(comments);
+    		}
+    		request.setAttribute("commentList",commentList);
     		String query2 =  "UPDATE board1 SET score='" + score +    						
-					"' WHERE num=" + num;    		
-    		stmt.executeUpdate(query2); 
+					"' WHERE num=" + num;
+    		stmt.executeUpdate(query2);
     		
     	} catch(SQLException ex){
     		

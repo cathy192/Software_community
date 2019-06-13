@@ -28,7 +28,6 @@ public class WriteAction implements CommandAction {
     	String subject = request.getParameter("subject");
     	String content = request.getParameter("content");
     	String category = request.getParameter("category");
-    	
     	String id = null;
     	String query=null;
     	Class.forName("com.mysql.cj.jdbc.Driver");
@@ -59,7 +58,6 @@ public class WriteAction implements CommandAction {
     				pstmt.setString(2, subject);
     				pstmt.setString(3, content);
     				pstmt.setString(4, category);
-    				//ì¿¼ë¦¬ ?¤í??
     				pstmt.executeUpdate();
     			
     				

@@ -38,7 +38,7 @@ public class ModifyformAction implements CommandAction {
         			return "loginerror.jsp";
         		}
     			
-    			request.setCharacterEncoding("euc-kr");
+    			request.setCharacterEncoding("utf-8");
     			String num = request.getParameter("num");
     			
     			conn = DriverManager.getConnection(url,dbUser,dbPass);    			    			

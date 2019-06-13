@@ -31,7 +31,6 @@ public class CommentAction implements CommandAction {
     	ResultSet rs = null;
     	
     	try {
-    		
     		HttpSession session = request.getSession();
     		String id = (String) session.getAttribute("id");
     		if(id == null){    			
@@ -49,34 +48,29 @@ public class CommentAction implements CommandAction {
     		
     		conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
     		
-    		stmt = conn.createStatement();    		
-    		rs = stmt.executeQuery(query);    		
-    		
+    		stmt = conn.createStatement();
+    		rs = stmt.executeQuery(query);
     	
     		ArrayList<comment> commentList = new ArrayList<comment>();
     		
     		while(rs.next()){
     			comment comments = new comment();
-    			comments.setNum(rs.getInt("num2"));    		
+    			comments.setNum(rs.getInt("num"));    		
     			comments.setId(rs.getString("id"));
     			comments.setContent(rs.getString("content"));
     			comments.setBoarddate(rs.getString("boarddate"));
     			commentList.add(comments);
     		}
     		request.setAttribute("commentList",commentList);
-    		 
     		
     	} catch(SQLException ex){
     		
     	} finally{
     		if(rs != null) try{rs.close();} catch(SQLException ex){}
-    		if(stmt != null) try{stmt.close();} catch(SQLException ex) {}
+    		if(stmt != null) try{stmt.close();} catch(SQLException ex) {}		
     		
     		if(conn != null) try{conn.close();} catch(SQLException ex) {}
     	}
- 
         return "content.jsp";
- 
     }
- 
 }
