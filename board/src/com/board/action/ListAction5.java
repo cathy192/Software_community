@@ -63,7 +63,8 @@ public class ListAction5 implements CommandAction {
     		rs = stmt.executeQuery(query);    		
     		
     		ArrayList<board> articleList = new ArrayList<board>();    		
-    		
+    		String title="공지게시판";
+    		request.setAttribute("Title", title);
     		while(rs.next()){
     			board article = new board();
     			article.setNum(rs.getInt("num"));

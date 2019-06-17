@@ -38,14 +38,14 @@ public class ModifyAction implements CommandAction {
     			String num = request.getParameter("num");    			
     			String subject = request.getParameter("subject");
     			String content = request.getParameter("content");
-    			String category = request.getParameter("category");
+    		
     			
     			conn = DriverManager.getConnection(url,dbUser,dbPass);    			    			    			
     					
     			stmt = conn.createStatement();
    			    			    		
-    			String sql = "UPDATE board1 SET subject='" + subject + "' ,content='"+ content +  "' ,category='"+ category +   						
-    						"' WHERE num=" + num;				
+    			String sql = "UPDATE board1 SET subject='" + subject + "' ,content='"+ content  +   						
+    						"' WHERE num=" +num;				
     			stmt.executeUpdate(sql);    			
 
     			stmt.close();

@@ -12,7 +12,7 @@
 <script>
 
    self.window.alert("입력한 글을 저장하였습니다.");
-   self.window.alert("${article}");
+  
    <c:if test="${article eq 1}">
    
 	   location.href="list1.do";
@@ -32,6 +32,10 @@
 	<c:if test="${article eq 5}">
 
 	   location.href="list5.do";  
+	</c:if>
+	<c:if test="${article eq 6}">
+
+	   location.href="list6.do";  
 	</c:if>
 	
 </script>

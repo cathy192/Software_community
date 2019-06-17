@@ -13,7 +13,7 @@ public class board {//계층간 데이터 교환을 위한 자바빈즈
 	//아이디
 	private String id;
 	
-	//이메일
+	private String img;
 	//private String Snum;
 	
 	//작성일자
@@ -71,6 +71,14 @@ public class board {//계층간 데이터 교환을 위한 자바빈즈
 	public String getBoarddate() {
 		return boarddate;
 	}
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
+	
+	
 	public void setBoarddate(String boarddate) {
 		this.boarddate = boarddate;
 	}

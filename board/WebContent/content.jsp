@@ -1,54 +1,189 @@
-<%@ page language="java" contentType="text/html; charset=euc-kr"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="euc-kr"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     
  <html>
 <head>
-<title>ê²Œì‹œíŒ</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <!-- Custom fonts for this theme -->
+  <link href="bootstrap_yen/startbootstrap-freelancer-gh-pages/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <!-- Theme CSS -->
+  <link href="bootstrap_yen/startbootstrap-freelancer-gh-pages/css/freelancer.min.css" rel="stylesheet">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">SOFTWARE DEPARTMENT</a>
+      <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1">
+          <!-- @@@@@@@@@@@È¸¿ø°¡ÀÔ, ·Î±×ÀÎ, µîµîÀ» ¸¸µé °÷@@@@@@@@@@@@ -->
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="loginform.jsp">Sign-Up</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="login.jsp">Login</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+<title>°Ô½ÃÆÇ</title>
 </head>
 
-<body>
+<body style="background-color:#880015;" id="page-top">
+<section class="page-section portfolio" id="portfolio">
+    <div class="container">
+    <h2 style="margin-top:100px;" class="page-section-heading text-center text-uppercase text-white">CONTENT</h2>
+      <!-- Icon Divider -->
+      <div class="divider-custom divider-light">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+          <i class="fas fa-star"></i>
+        </div>
+        <div class="divider-custom-line"></div>
+      </div>
 	<div style="text-align:right">
-	ì‚¬ìš©ìID : ${id} <input type=button class="btn btn-info" value="ë¡œê·¸ì•„ì›ƒ" OnClick="window.location='logout.do'">
+	»ç¿ëÀÚID : ${id} <input type=button class="btn btn-outline-info" value="Log out" OnClick="window.location='logout.do'">
 	</div>
 	<c:forEach items="${articleList}" var="article">
-	<table class="table table-striped table-bordered table-hover" style="text-align:center">
-		<caption style="text-align:center">ê²Œì‹œíŒ ë‚´ìš©</caption>
+	<table class="table table-striped table-bordered" style="text-align:center; color:white;">	
 		<tr>
-			<td>ì œëª©</td>
-			<td style="text-align:left">${article.subject}</td>			
+			<td>Á¦¸ñ</td>
+			<td colspan="7" style="text-align:left; " >${article.subject}</td>			
 		</tr>
 		<tr>
-			<td>ì‘ì„±ì</td>
-			<td style="text-align:left">${article.id}</td>						
-		</tr>
-		<tr>
-			<td>ì¹´í…Œê³ ë¦¬</td>
-			<td style="text-align:left">${article.category}</td>						
-		</tr>
-		<tr>
-			<td>ì‘ì„±ì¼ì</td>
-			<td style="text-align:left">${article.boarddate}</td>						
-		</tr>
-		<tr>
-			<td>ì¡°íšŒìˆ˜</td>
-			<td style="text-align:left">${article.score}</td>						
-		</tr>	
-		<tr>
-			<td>ë‚´ìš©</td>
-			<td style="text-align:left">${article.content}</td>						
-		</tr>
+			<td>ÀÛ¼ºÀÚ</td>
+			<td style="text-align:left; " >${article.id}</td>						
 		
+			<td>Ä«Å×°í¸®</td>
+			<td style="text-align:left;">${article.category}</td>						
+		</tr>
+		<tr>
+			<td>ÀÛ¼ºÀÏÀÚ</td>
+			<td style="text-align:left; " >${article.boarddate}</td>						
+		
+			<td>Á¶È¸¼ö</td>
+			<td style="text-align:left; " >${article.score}</td>						
+		</tr>
+		</table>
+	<table class="table table-striped table-bordered" style="color:white;">	
+		<tr>
+			<td colspan="8" style=" color:black; text-align:left; height:250px; font-size:30px; background-color:white;  ">${article.content}</td>						
+		</tr>
+	</table>
+		<tr>
+			
+			<td style="text-align:left"><img src="${article.img}" width="250" height="150" /></td>						
+		</tr>	
 	</table>
 	<div style="text-align:right">
-		<input type=button class="btn btn-danger" value="ì‚­ì œí•˜ê¸°" OnClick="window.location='delete.do?num=${article.num}'">
-		<input type=button class="btn btn-warning" value="ìˆ˜ì •í•˜ê¸°" OnClick="window.location='modifyform.do?num=${article.num}'">			
-		<input type=button class="btn btn-secondary" value="ëŒì•„ê°€ê¸°" OnClick="window.location='main.jsp'">
+		<input type=button class="btn btn-outline-danger" value="»èÁ¦ÇÏ±â" OnClick="window.location='delete.do?num=${article.num}'">
+		<input type=button class="btn btn-outline-warning" value="¼öÁ¤ÇÏ±â" OnClick="window.location='modifyform.do?num=${article.num}'">			
+		<input type=button class="btn btn-outline-secondary" value="µ¹¾Æ°¡±â" OnClick="window.location='best.do'">
 	</div>
-	</c:forEach>		
+	</c:forEach>
+	</div>
+	<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@´ñ±ÛºÎºĞ@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
+	<!-- ¿©±â´Â ´ñ±ÛÃ¢ÀÌ º¸¿©Áö´Â°÷ -->
+	<h2 style="margin-left: 20px; color: white;">´ñ±Û</h2>
+	<br/>
+	<table class="table table-striped table-bordered " style="text-align:center; color:white;">
+		
+		<tr>
+			<td width="250px">¾ÆÀÌµğ</td>
+			<td width="120px">ÀÛ¼ºÀÏÀÚ</td>
+			<td>´ñ±Û ³»¿ë</td>
+		</tr>
+		
+		<c:forEach items="${commentList}" var="comment">
+		<tr>
+			<td>${comment.id}</td>
+			<td>${comment.boarddate}</td>
+			<td style="text-align-last:justify;">${comment.content}
+			<%-- <c:if test="${comment.id eq id}">
+				<%int num=Integer.parseInt(request.getParameter("num2")); %>
+				<input type=button class="btn btn-danger" value="»èÁ¦ÇÏ±â" OnClick="window.location='commentsdelete.do?num=${comment.num}&num=<%=num%>'" >
+			</c:if> --%>
+			</td>
+		</tr>
+		</c:forEach>
+	</table>
+	<c:forEach items="${articleList}" var="article">
+	<form id="inform" action="/board/commentwrite.do?num=${article.num}" method="post" style="margin-bottom:10;" onsubmit="return writeCheck();">
+		<table class="table table-striped table-bordered " style="text-align:left; ;">
+			<tr>
+				<td  style="color: white;"width="250px">${id}</td>
+				<td><input  type="text" id="comment" name="comment" placeholder="³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä" size="100"></td>
+				<td><input type=submit class="btn btn-success" value="µî·Ï" Onclick="javascript:writeCheck();"></td>
+			</tr>	
+		</table>
+	</form>
+	</c:forEach>
+	</div>
+	</section>
+<!-- Footer -->
+  <footer class="footer text-center">
+    <div class="container">
+      <div class="row">
+
+        <!-- Footer Location -->
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">Location</h4>
+          <p class="lead mb-0">1. Seowon-gu, Cheongju, Chungbuk
+            <br>Chungbuk national university</p>
+        </div>
+
+        <!-- Footer Social Icons -->
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">Software Site</h4>
+          <!-- <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-facebook-f"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-twitter"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="http://www.chungbuk.ac.kr/site/www/main.do" target="_blank">
+            <i class="fab fa-fw fa-linkedin-in"></i>
+          </a> -->
+          <a class="btn btn-outline-light btn-social mx-1" href="https://software.cbnu.ac.kr/" target="_self">
+            <i class="fab fa-fw fa-dribbble"></i>
+          </a>
+        </div>
+
+        <!-- Footer About Text -->
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">OPEN SOURCE PROJECT TEAM 1</h4>
+          <p class="lead mb-0"><b>ÀÌ¿¹³ª ³²ÈÆ ÀåÂù¿ë ±èÀÏÈ¯</b></p>
+        </div>
+        
+
+      </div>
+    </div>
+  </footer>
+ <script src="bootstrap_yen/startbootstrap-freelancer-gh-pages/vendor/jquery/jquery.min.js"></script>
+  <script src="bootstrap_yen/startbootstrap-freelancer-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="bootstrap_yen/startbootstrap-freelancer-gh-pages/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Contact Form JavaScript -->
+  <script src="bootstrap_yen/startbootstrap-freelancer-gh-pages/js/jqBootstrapValidation.js"></script>
+  <script src="bootstrap_yen/startbootstrap-freelancer-gh-pages/js/contact_me.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="bootstrap_yen/startbootstrap-freelancer-gh-pages/js/freelancer.min.js"></script>
+		
+</body>	
 </body>
 </html>

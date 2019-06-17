@@ -63,7 +63,8 @@ public class ListAction3 implements CommandAction {
     		rs = stmt.executeQuery(query);    		
     		
     		ArrayList<board> articleList = new ArrayList<board>();    		
-    		
+    		String title="정보게시판";
+    		request.setAttribute("Title", title);
     		while(rs.next()){
     			board article = new board();
     			article.setNum(rs.getInt("num"));

@@ -3,8 +3,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -15,6 +15,29 @@
 
   <!-- Theme CSS -->
   <link href="bootstrap_yen/startbootstrap-freelancer-gh-pages/css/freelancer.min.css" rel="stylesheet">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="main.jsp">SOFTWARE DEPARTMENT</a>
+      <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1">
+          <!-- @@@@@@@@@@@회원가입, 로그인, 등등을 만들 곳@@@@@@@@@@@@ -->
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="loginform.jsp">Sign-Up</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="login.jsp">Login</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
 
 <title>로그인 페이지</title>
 <script type="text/javascript">
@@ -27,15 +50,10 @@
 	}	
 </script>
 </head>
-<body>
-<header class="masthead bg-primary text-white text-center">
-    <div class="container d-flex align-items-center flex-column">
-
-      <!-- Masthead Avatar Image -->
-      <img class="masthead-avatar mb-5" src="img/mark.png" alt="">
-
-      <!-- Masthead Heading -->
-      <h1 class="masthead-heading text-uppercase mb-0">SOFTWARE DEPARTMENT</h1>
+<body style="background-color:#880015;" id="page-top">
+<section class="page-section portfolio" id="portfolio">
+    <div class="container">
+    <h2 style="margin-top:100px;" class="page-section-heading text-center text-uppercase text-white">LOG IN</h2>
 
       <!-- Icon Divider -->
       <div class="divider-custom divider-light">
@@ -45,38 +63,19 @@
         </div>
         <div class="divider-custom-line"></div>
       </div>
-
-      <!-- Masthead Subheading -->
-      <p class="masthead-subheading font-weight-light mb-0">COMMUNITY SITE</p>
-
-    </div>
-  </header>
-<section class="page-section portfolio" id="portfolio">
-    <div class="container">
-
-    <!-- Portfolio Section Heading -->
-	<form action="login.do" method="post" name="form">
-		<table class="table table-striped table-bordered table-hover">
-			<caption style="text-align:center">로그인</caption>
-		<tr>
-			<th><h4 class="page-section-heading text-center text-uppercase text-secondary mb-0">ID</h4></th> 
-			<th><input type="text" name="id" /></th>
-		</tr>
-		<tr>
-			<th><h4 class="page-section-heading text-center text-uppercase text-secondary mb-0">PW</h4></th>
-			<th><input type="password" name="password" /></th>
-		</tr>
-		<tr>
-			<th></th>
-			<th>
-				<input type="button" class="btn btn-primary" value="로그인" onClick="login()" />
-				<input type="button" class="btn btn-secondary" value="취소" onClick="cancel()" />
-				<input type="button" class="btn btn-success" value="회원가입" onClick="window.location='loginform.jsp'" />
-			</th>
-		</tr>
-		</table>
-	</form>
-    </div>
+<form style="margin-top:100px;" action="login.do" method="post" name="form">
+  <div class="form-group">
+    <h4 style="color:white">ID</h4>
+    <input type="text" class="form-control" placeholder="Enter ID" name="id">
+  </div>
+  <div class="form-group">
+    <h4 style="color:white">Pass word</h4>
+    <input type="password" class="form-control" placeholder="Password" name="password">
+  </div>
+  	<input type="button" class="btn btn-outline-primary" value="Log in" onClick="login()" />
+	<input type="button" class="btn btn-outline-light" value="Register" onClick="window.location='loginform.jsp'" />
+</form>
+</div>
 </section>
   <!-- Footer -->
   <footer class="footer text-center">
@@ -86,7 +85,7 @@
         <!-- Footer Location -->
         <div class="col-lg-4 mb-5 mb-lg-0">
           <h4 class="text-uppercase mb-4">Location</h4>
-          <p class="lead mb-0">1. Seowon-gu,Cheongju,Chungbuk
+          <p class="lead mb-0">1. Seowon-gu, Cheongju, Chungbuk
             <br>Chungbuk national university</p>
         </div>
 
@@ -117,8 +116,7 @@
       </div>
     </div>
   </footer>
-	  <!-- Bootstrap core JavaScript -->
-  <script src="bootstrap_yen/startbootstrap-freelancer-gh-pages/vendor/jquery/jquery.min.js"></script>
+ <script src="bootstrap_yen/startbootstrap-freelancer-gh-pages/vendor/jquery/jquery.min.js"></script>
   <script src="bootstrap_yen/startbootstrap-freelancer-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Plugin JavaScript -->

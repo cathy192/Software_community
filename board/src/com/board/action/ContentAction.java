@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.board.beans.board;
+import com.board.beans.comment;
  
 import com.board.controller.CommandAction;
  
@@ -30,7 +31,7 @@ public class ContentAction implements CommandAction {
     	Connection conn = null;
     	Statement stmt = null;    	
     	ResultSet rs = null;   
-    	
+    	ResultSet rs1 = null;
     
     	int score = 0;
     	
@@ -50,23 +51,26 @@ public class ContentAction implements CommandAction {
     		String dbPass = "root";
     		
     		String query = "select * from board1 where num = "+num;
-    		
+    		String query1 = "select distinct comment1.num,comment1.id,comment1.boarddate,comment1.content from comment1 join board1 on comment1.num="+num;
     		conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
-    		
+    		request.setCharacterEncoding("euc-kr");
     		stmt = conn.createStatement();    		
     		rs = stmt.executeQuery(query);    		
     		
     	
     		ArrayList<board> articleList = new ArrayList<board>();
-    		
     		while(rs.next()){
     			board article = new board();
     			article.setNum(rs.getInt("num"));    			
     			article.setSubject(rs.getString("subject"));
     			article.setContent(rs.getString("content"));
+    			/*con=rs.getString("content");
+    			con = con.replaceAll("\r\n", "<br>");
+    			article.setContent(con); */
     			article.setId(rs.getString("id"));
     			article.setBoarddate(rs.getString("boarddate"));
     			article.setCategory(rs.getInt("category"));
+    			article.setImg(rs.getString("img"));
     			score = Integer.parseInt(rs.getString("score")) + 1;
     			article.setScore(String.valueOf(score));
     			//article.setEmail(rs.getString("email"));
@@ -74,10 +78,22 @@ public class ContentAction implements CommandAction {
     		}
     		request.setAttribute("articleList",articleList);
     		
+    		rs1 = stmt.executeQuery(query1);
     		
+			ArrayList<comment> commentList = new ArrayList<comment>();
+    		
+    		while(rs1.next()){
+    			comment comments = new comment();
+    			comments.setNum(rs1.getInt("num"));    		
+    			comments.setId(rs1.getString("id"));
+    			comments.setContent(rs1.getString("content"));
+    			comments.setBoarddate(rs1.getString("boarddate"));
+    			commentList.add(comments);
+    		}
+    		request.setAttribute("commentList",commentList);
     		String query2 =  "UPDATE board1 SET score='" + score +    						
-					"' WHERE num=" + num;    		
-    		stmt.executeUpdate(query2); 
+					"' WHERE num=" + num;
+    		stmt.executeUpdate(query2);
     		
     	} catch(SQLException ex){
     		

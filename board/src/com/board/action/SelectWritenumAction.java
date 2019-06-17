@@ -1,5 +1,5 @@
 /**
- * ê¸€ì„ ì‘ì„± í•˜ê³  ë°ì´í„°ë² ì´ìŠ¤ì— ë„£ëŠ” Action
+ * ±ÛÀ» ÀÛ¼º ÇÏ°í µ¥ÀÌÅÍº£ÀÌ½º¿¡ ³Ö´Â Action
  */
 package com.board.action;
  
@@ -17,18 +17,18 @@ import com.board.beans.board;
 import com.board.controller.CommandAction;
 import com.mysql.cj.protocol.Resultset;
  
-public class WriteAction implements CommandAction {
+public class SelectWritenumAction implements CommandAction {
  
     public String requestPro(HttpServletRequest request,
  
     HttpServletResponse response) throws Throwable {
     	
     	request.setCharacterEncoding("euc-kr");
-    	//ì œëª©ê³¼ ë‚´ìš©ì„ ì…ë ¥ ë°›ì•„ ë³€ìˆ˜ì— ì €ì¥
+    	//Á¦¸ñ°ú ³»¿ëÀ» ÀÔ·Â ¹Ş¾Æ º¯¼ö¿¡ ÀúÀå
     	String subject = request.getParameter("subject");
     	String content = request.getParameter("content");
     	String category = request.getParameter("category");
-    	String img = request.getParameter("img");
+    	
     	String id = null;
     	String query=null;
     	Class.forName("com.mysql.cj.jdbc.Driver");
@@ -36,10 +36,10 @@ public class WriteAction implements CommandAction {
     	Connection conn = null;
     	PreparedStatement pstmt = null;
     	ResultSet rs=null;
-		request.setCharacterEncoding("euc-kr");
+    	
     	try{
     		HttpSession session = request.getSession();
-    		//ì„¸ì…˜ì„ ì½ì–´ ë¡œê·¸ì¸ ìƒíƒœê°€ ì•„ë‹ˆë©´ ë¡œê·¸ì¸ ì°½ìœ¼ë¡œ ì´ë™
+    		//¼¼¼ÇÀ» ÀĞ¾î ·Î±×ÀÎ »óÅÂ°¡ ¾Æ´Ï¸é ·Î±×ÀÎ Ã¢À¸·Î ÀÌµ¿
         	id = (String) session.getAttribute("id");
     		if( id == null){
     			return "loginerror.jsp";
@@ -54,13 +54,12 @@ public class WriteAction implements CommandAction {
 			conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
 			
       		pstmt = conn.prepareStatement(      				
-      				"insert into board1 values(NULL,?,?,?,now(),0,?,?)");
+      				"insert into sub values(NULL,?,?,?,now(),0,?)");
     				pstmt.setString(1, id);
     				pstmt.setString(2, subject);
     				pstmt.setString(3, content);
     				pstmt.setString(4, category);
-    				pstmt.setString(5, img);
-    				//ì¿¼ë¦¬ ì‹¤í–‰
+    				//Äõ¸® ½ÇÇà
     				pstmt.executeUpdate();
     			
     				

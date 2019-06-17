@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 import com.board.beans.board;
 import com.board.controller.CommandAction;
  
-public class ListAction1 implements CommandAction {
+public class ListAction6 implements CommandAction {
 	
     public String requestPro(HttpServletRequest request,
  
@@ -49,13 +49,13 @@ public class ListAction1 implements CommandAction {
     		String query = null; 
     		
     		if(opt == null){    			
-    			query = "select * from board1  where category=1 order by num";
+    			query = "select * from board1  where category=6 order by num";
     		}else if(opt.equals("0")){    			
-    			query = "select * from board1 where subject like '%"+condition+"%' order by num";        		
+    			query = "select * from board5 where subject like '%"+condition+"%' order by num";        		
     		}else if(opt.equals("1")){    			
-    			query = "select * from board1 where content like '%"+condition+"%' order by num";        		
+    			query = "select * from board5 where content like '%"+condition+"%' order by num";        		
     	   	}else if(opt.equals("2")){    			
-    			query = "select * from board1 where id like '%"+condition+"%' order by num";        		
+    			query = "select * from board5 where id like '%"+condition+"%' order by num";        		
     		}
     		conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPass);
     		
@@ -63,24 +63,21 @@ public class ListAction1 implements CommandAction {
     		rs = stmt.executeQuery(query);    		
     		
     		ArrayList<board> articleList = new ArrayList<board>();    		
-    		String title="홍보게시판";
+    		String title="자유게시판";
     		request.setAttribute("Title", title);
     		while(rs.next()){
     			board article = new board();
-    			
     			article.setNum(rs.getInt("num"));
     			article.setSubject(rs.getString("subject"));
     			article.setContent(rs.getString("content"));
-    			article.setId(rs.getString("id")); 
+    			article.setId(rs.getString("id"));
     			article.setBoarddate(rs.getString("boarddate"));
-    			article.setImg(rs.getString("img"));
     			article.setScore(rs.getString("score"));
     			article.setCategory(rs.getInt("category"));
     			articleList.add(article);
-    		
+    			
     		}
     		request.setAttribute("articleList",articleList);
-    		
     		
     	} catch(SQLException ex){
     		
@@ -89,7 +86,7 @@ public class ListAction1 implements CommandAction {
     		if(stmt != null) try{stmt.close();} catch(SQLException ex) {}
     		
     		if(conn != null) try{conn.close();} catch(SQLException ex) {}
-    	}                                                                 
+    	}
  
         return "list.jsp";
  
